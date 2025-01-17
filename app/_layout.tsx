@@ -37,7 +37,7 @@ export default function RootLayout() {
             headerTitle: () => <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
               <Image
                 style={{
-                  height: 30,
+                  height: 100,
                   width: 150,
               }}
                 source={require('@/assets/images/Chase_logo.png')}
