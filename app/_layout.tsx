@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { Image } from 'expo-image';
+import { View } from 'react-native';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -28,12 +30,29 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    // <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="index"
+          options={{
+            headerTitle: () => <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+              <Image
+                style={{
+                  height: 30,
+                  width: 150,
+              }}
+                source={require('@/assets/images/Chase_logo.png')}
+                contentFit="contain"
+            />
+            </View>,
+            headerStyle: {
+              backgroundColor: '#145bb5',
+            },
+            headerShadowVisible: false,
+          }}
+        />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false}} />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 }
